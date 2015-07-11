@@ -22,6 +22,7 @@ h6 {
 }
 
 .topnav {
+    background-color:#000000;
     font-size: 14px; 
 }
 
@@ -35,7 +36,7 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/intro-bg.jpg) no-repeat center center;
+    background: url(https://cloud.githubusercontent.com/assets/12797634/8635112/b6a5abf2-2832-11e5-9b70-8bfa05995ba5.jpg) no-repeat center center;
     background-size: cover;
 }
 
