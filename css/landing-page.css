@@ -34,9 +34,9 @@ h6 {
 .intro-header {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
-    text-align: -webkit-right;
-    color: darkcyan;
-    background: url(http://hdwallpapershoot.com/wp-content/uploads/2015/07/Empire-State-Building-Wallpapers-HD-7.jpg) no-repeat center center;
+    text-align: -webkit-left;
+    color: antiquewhite;
+    background: url(https://cloud.githubusercontent.com/assets/12797634/12866444/933c09d4-ccf3-11e5-96e5-fff99dae25e8.jpg) no-repeat center center;
     background-size: cover;
 }
 
