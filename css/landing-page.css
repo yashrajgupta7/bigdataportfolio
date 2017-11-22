@@ -35,7 +35,7 @@ h6 {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
     padding-bottom: 50px;
     text-align: -webkit-left;
-    color: black;
+    color: dark-grey;
     background: url(https://user-images.githubusercontent.com/12797634/33151797-97ce217e-cfff-11e7-9e9b-9d0c522cfb92.jpg) no-repeat center center;
     background-size: cover;
 }
