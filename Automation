@@ -1,0 +1,67 @@
+import os
+import subprocess
+from subprocess import PIPE , run
+class myconfig():
+        path = os.getcwd()
+        device = {}
+        subprocess.call("instruments -s devices | grep -v Simulator | grep -v Mac| grep -v Devices >IOS-device-info.txt",shell=True)
+
+        data = open("IOS-device-info.txt", 'r+').read()
+        data = data.split("\n")
+        # print(data[0])
+        num_lines = sum(1 for line in open('IOS-device-info.txt'))
+        if 'Test' in path :
+                Newpath = os.path.join(path.strip('Test'), 'Config', 'IOS')
+        else:
+                Newpath = os.path.join(path.strip('MyRunner.py'), 'Config', 'IOS')
+
+        print(Newpath)
+
+        for i in range(0, num_lines):
+            if i == 0:
+                udid = data[i].split(" ")
+                #print(udid)
+                device["udid"] = udid[2].strip('[]')
+                device["deviceName"] = udid[0]
+                device['platformVersion'] = udid[1].strip('()')
+                Desired_Cap_Device1 = dict(
+                    line.strip().split(':') for line in open(os.path.join(Newpath, 'Device1_capabilities.properties'))
+                    if not line.startswith('#') and not line.startswith('\n'))
+                #print(Desired_Cap_Device1)
+                Desired_Cap_Device1['udid'] = device['udid']
+                Desired_Cap_Device1['platformVersion'] = device['platformVersion']
+                Desired_Cap_Device1['deviceName'] = device['deviceName']
+                #Desired_Cap_Device1['webDriverAgentUrl'] = 'http://localhost:' + Desired_Cap_Device1['wdaLocalPort']
+                path = os.getcwd()
+                path1 = path.split('/')
+                Desired_Cap_Device1['app'] = os.path.join('/', path1[1], path1[2], 'Downloads', Desired_Cap_Device1['app'])
+                #f1.write(str(Desired_Cap_Device1))
+                print(Desired_Cap_Device1)
+            elif i == 1:
+                udid = data[i].split(" ")
+                #print(udid)
+                device["udid"] = udid[2].strip('[]')
+
+                device["deviceName"] = udid[0]
+                device['platformVersion'] = udid[1].strip('()')
+                Desired_Cap_Device2 = dict(
+                    line.strip().split(':') for line in open(os.path.join(Newpath, 'Device2_capabilities.properties'))
+                    if not line.startswith('#') and not line.startswith('\n'))
+                Desired_Cap_Device2['udid'] = device['udid']
+                Desired_Cap_Device2['platformVersion'] = device['platformVersion']
+                Desired_Cap_Device2['deviceName'] = device['deviceName']
+                #Desired_Cap_Device2['webDriverAgentUrl'] = 'http://localhost:' + Desired_Cap_Device2['wdaLocalPort']
+                path = os.getcwd()
+                path1 = path.split('/')
+                Desired_Cap_Device2['app'] = os.path.join('/', path1[1], path1[2], 'Downloads', Desired_Cap_Device2['app'])
+                #f2.write(str(Desired_Cap_Device2))
+                print(Desired_Cap_Device2)
+
+        input_parameter =  dict(line.strip().split(':') for line in open(os.path.join(Newpath,'MasterConfig.properties')) if
+                                   not line.startswith('#') and not line.startswith('\n'))
+        #Desired_Cap_Device1["wdaLocalPort"] = int(Desired_Cap_Device1["wdaLocalPort"])
+        #Desired_Cap_Device2["wdaLocalPort"] = int(Desired_Cap_Device2["wdaLocalPort"])
+        #Desired_Cap_Device1["webDriverAgentUrl"] = "http://Localhost:8100"
+        #Desired_Cap_Device2["webDriverAgentUrl"] = "http://Localhost:8200"
+
+        print(input_parameter)
